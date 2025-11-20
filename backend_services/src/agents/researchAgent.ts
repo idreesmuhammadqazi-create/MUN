@@ -109,7 +109,7 @@ export class ResearchAgent {
       const searchResults = await this.performMultiSourceSearch(query);
       const analyzedSources = await this.analyzeSources(searchResults, query);
       const synthesizedContent = await this.synthesizeResearch(query, analyzedSources);
-      const factCheckResults = await this.performFactCheck(synthesizedContent);
+      const factCheckResults = await this.performFactCheck(synthesizedContent.content);
 
       const result: ResearchResult = {
         content: synthesizedContent.content,
