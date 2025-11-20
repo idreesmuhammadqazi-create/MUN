@@ -1,5 +1,5 @@
 import { Orchestrator } from './orchestrator';
-import { Logger } from 'winston';
+import * as winston from 'winston';
 import dotenv from 'dotenv';
 
 // Load environment variables
