@@ -1,4 +1,4 @@
-import { OpenAI } from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { Logger } from 'winston';
