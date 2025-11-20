@@ -239,7 +239,7 @@ export class ResearchAgent {
         credibilityScore: this.calculateGeneralCredibility(source.domain)
       }));
     } catch (error) {
-      this.logger.warn(`Web search failed for query: ${query.query}`, { error: error.message });
+      this.logger.warn(`Web search failed for query: ${query.query}`, { error: error instanceof Error ? error.message : String(error) });
       return [];
     }
   }
