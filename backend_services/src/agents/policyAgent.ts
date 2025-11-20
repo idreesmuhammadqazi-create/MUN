@@ -125,7 +125,7 @@ export class PolicyAgent {
   private async generatePolicyResponse(query: string, context: any, queryType: any): Promise<PolicyResult> {
     const prompt = this.buildPolicyPrompt(query, context, queryType);
 
-    const message = await this.anthropic.messages.create({
+    const message = await this.anthropic.beta.messages.create({
       model: 'claude-3-sonnet-20240229',
       max_tokens: 1200,
       temperature: 0.3, // Lower temperature for procedural accuracy
