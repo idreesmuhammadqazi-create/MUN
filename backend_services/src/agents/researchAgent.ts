@@ -195,7 +195,7 @@ export class ResearchAgent {
 
         sources.push(...unSources);
       } catch (error) {
-        this.logger.warn(`UN search failed for query: ${unQuery}`, { error: error.message });
+        this.logger.warn(`UN search failed for query: ${unQuery}`, { error: error instanceof Error ? error.message : String(error) });
       }
     }
 
