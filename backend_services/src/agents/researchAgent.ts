@@ -482,7 +482,7 @@ Focus on:
 
 Respond in JSON format with an array of fact-check results.`;
 
-      const message = await this.anthropic.messages.create({
+      const message = await this.anthropic.beta.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 1000,
         temperature: 0.1,
