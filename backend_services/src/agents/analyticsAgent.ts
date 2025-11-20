@@ -159,14 +159,19 @@ export class AnalyticsAgent {
   private async generateAnalytics(query: string, context: any, analysis: any): Promise<AnalyticsResult> {
     const prompt = this.buildAnalyticsPrompt(query, context, analysis);
 
-    const completion = await this.openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
-      messages: [{ role: 'user', content: prompt }],
+    const message = await this.anthropic.messages.create({
+      model: 'claude-3-sonnet-20240229',
       max_tokens: 1600,
-      temperature: 0.3
+      temperature: 0.3,
+      messages: [
+        {
+          role: 'user',
+          content: prompt
+        }
+      ]
     });
 
-    const content = completion.choices[0]?.message?.content || '';
+    const content = message.content[0]?.type === 'text' ? message.content[0].text : '';
 
     // Extract structured analytics data
     const structured = await this.extractAnalyticsStructure(content, analysis);
