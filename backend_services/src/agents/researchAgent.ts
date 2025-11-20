@@ -39,7 +39,7 @@ export interface FactCheckResult {
 }
 
 export class ResearchAgent {
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
   private cache: Map<string, ResearchResult> = new Map();
   private readonly CACHE_TTL = 1000 * 60 * 30; // 30 minutes
