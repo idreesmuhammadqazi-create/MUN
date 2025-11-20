@@ -104,8 +104,8 @@ export class CrisisAgent {
       return result;
 
     } catch (error) {
-      this.logger.error(`Crisis analysis failed for: ${query}`, { error: error.message });
-      throw new Error(`Crisis analysis failed: ${error.message}`);
+      this.logger.error(`Crisis analysis failed for: ${query}`, { error: error instanceof Error ? error.message : String(error) });
+      throw new Error(`Crisis analysis failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
