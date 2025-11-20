@@ -256,7 +256,7 @@ export class ResearchAgent {
           credibilityScore: 0.85 // High credibility for academic sources
         }));
     } catch (error) {
-      this.logger.warn(`Academic search failed for query: ${query.query}`, { error: error.message });
+      this.logger.warn(`Academic search failed for query: ${query.query}`, { error: error instanceof Error ? error.message : String(error) });
       return [];
     }
   }
