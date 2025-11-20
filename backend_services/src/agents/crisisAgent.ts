@@ -338,7 +338,7 @@ Focus on actionable intelligence and specific diplomatic strategies.`;
         return this.extractFallbackCrisisStructure(analysis);
       }
     } catch (error) {
-      this.logger.warn('Failed to extract crisis structure', { error: error.message });
+      this.logger.warn('Failed to extract crisis structure', { error: error instanceof Error ? error.message : String(error) });
       return this.extractFallbackCrisisStructure(analysis);
     }
   }
