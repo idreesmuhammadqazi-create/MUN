@@ -1,4 +1,4 @@
-import { OpenAI } from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 import { Logger } from 'winston';
 
 export interface WritingQuery {
