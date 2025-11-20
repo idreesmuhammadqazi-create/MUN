@@ -331,7 +331,7 @@ Ensure all metrics include specific numbers and percentages where applicable.`;
         return this.extractFallbackAnalyticsStructure(analysis);
       }
     } catch (error) {
-      this.logger.warn('Failed to extract analytics structure', { error: error.message });
+      this.logger.warn('Failed to extract analytics structure', { error: error instanceof Error ? error.message : String(error) });
       return this.extractFallbackAnalyticsStructure(analysis);
     }
   }
