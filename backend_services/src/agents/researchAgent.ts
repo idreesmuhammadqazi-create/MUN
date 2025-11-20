@@ -450,7 +450,7 @@ Response:`;
       return { content, confidence };
 
     } catch (error) {
-      this.logger.error('Research synthesis failed', { error: error.message });
+      this.logger.error('Research synthesis failed', { error: error instanceof Error ? error.message : String(error) });
       return {
         content: `I found ${sources.length} relevant sources, but encountered an error while synthesizing the information. Here are the top sources:\n\n${sources.slice(0, 5).map(s => `- [${s.title}](${s.url})`).join('\n')}`,
         confidence: 0.3
