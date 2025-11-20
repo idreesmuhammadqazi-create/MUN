@@ -280,7 +280,8 @@ Focus on creating a professional, well-structured document that effectively repr
       }
     };
 
-    return guidance[type as keyof typeof guidance]?.[phase as keyof typeof guidance[string]] || 'Focus on clear, diplomatic communication appropriate for the current debate phase.';
+    const guidanceMap = guidance[type as keyof typeof guidance];
+    return guidanceMap?.[phase as keyof typeof guidanceMap] || 'Focus on clear, diplomatic communication appropriate for the current debate phase.';
   }
 
   private getDiplomaticPhrasesForTone(tone: string): string {
