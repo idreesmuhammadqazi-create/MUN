@@ -456,7 +456,7 @@ Ensure all metrics include specific numbers and percentages where applicable.`;
       predictions: 0.65
     };
 
-    baseConfidence = Math.min(baseConfidence, focusConfidence[analysis.focus] || 0.8);
+    baseConfidence = Math.min(baseConfidence, (focusConfidence as any)[analysis.focus] || 0.8);
 
     return Math.min(baseConfidence, 1.0);
   }
