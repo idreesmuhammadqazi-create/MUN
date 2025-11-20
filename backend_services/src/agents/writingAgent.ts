@@ -421,7 +421,7 @@ Focus on diplomatic effectiveness, clarity, and professional presentation.`;
       'position-paper': 0.85
     };
 
-    baseConfidence = Math.min(baseConfidence, typeConfidence[analysis.type] || 0.8);
+    baseConfidence = Math.min(baseConfidence, (typeConfidence as any)[analysis.type] || 0.8);
 
     return Math.min(baseConfidence, 1.0);
   }
