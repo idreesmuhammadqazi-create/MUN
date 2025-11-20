@@ -285,7 +285,7 @@ export class ResearchAgent {
         }
       }
     } catch (error) {
-      this.logger.error(`Web search execution failed`, { query, error: error.message });
+      this.logger.error(`Web search execution failed`, { query, error: error instanceof Error ? error.message : String(error) });
     }
 
     return sources;
