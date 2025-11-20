@@ -32,7 +32,7 @@ if (!ANTHROPIC_API_KEY) {
 }
 
 // Configuration
-const PORT = process.env.PORT || 3001;
+const PORT = parseInt(process.env.PORT || '3001');
 
 // Start the orchestrator
 const orchestrator = new Orchestrator(PORT, ANTHROPIC_API_KEY, logger);
