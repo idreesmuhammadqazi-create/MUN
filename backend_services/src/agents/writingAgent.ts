@@ -360,7 +360,7 @@ Focus on diplomatic effectiveness, clarity, and professional presentation.`;
         return this.extractFallbackWritingStructure(content);
       }
     } catch (error) {
-      this.logger.warn('Failed to extract writing structure', { error: error.message });
+      this.logger.warn('Failed to extract writing structure', { error: error instanceof Error ? error.message : String(error) });
       return this.extractFallbackWritingStructure(content);
     }
   }
