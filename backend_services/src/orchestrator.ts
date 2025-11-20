@@ -69,25 +69,25 @@ export class Orchestrator extends EventEmitter {
   private crisisAgent: CrisisAgent;
   private analyticsAgent: AnalyticsAgent;
 
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
   private isProcessingQueue = false;
 
-  constructor(port: number, openaiApiKey: string, logger: Logger) {
+  constructor(port: number, anthropicApiKey: string, logger: Logger) {
     super();
     this.logger = logger;
-    this.openai = new OpenAI({ apiKey: openaiApiKey });
+    this.anthropic = new Anthropic({ apiKey: anthropicApiKey });
 
     // Initialize WebSocket server
     this.wsServer = new WebSocket.Server({ port });
     this.setupWebSocketServer();
 
     // Initialize agents
-    this.researchAgent = new ResearchAgent(openaiApiKey, logger);
-    this.policyAgent = new PolicyAgent(openaiApiKey, logger);
-    this.writingAgent = new WritingAgent(openaiApiKey, logger);
-    this.crisisAgent = new CrisisAgent(openaiApiKey, logger);
-    this.analyticsAgent = new AnalyticsAgent(openaiApiKey, logger);
+    this.researchAgent = new ResearchAgent(anthropicApiKey, logger);
+    this.policyAgent = new PolicyAgent(anthropicApiKey, logger);
+    this.writingAgent = new WritingAgent(anthropicApiKey, logger);
+    this.crisisAgent = new CrisisAgent(anthropicApiKey, logger);
+    this.analyticsAgent = new AnalyticsAgent(anthropicApiKey, logger);
 
     // Start task processing
     this.startTaskProcessor();
