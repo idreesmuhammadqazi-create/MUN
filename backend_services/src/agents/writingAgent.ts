@@ -334,7 +334,7 @@ Provide a JSON response with:
 
 Focus on diplomatic effectiveness, clarity, and professional presentation.`;
 
-      const message = await this.anthropic.messages.create({
+      const message = await this.anthropic.beta.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 600,
         temperature: 0.3,
