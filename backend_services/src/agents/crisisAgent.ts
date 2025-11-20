@@ -296,7 +296,7 @@ Return a JSON object with:
 
 Focus on actionable intelligence and specific diplomatic strategies.`;
 
-      const message = await this.anthropic.messages.create({
+      const message = await this.anthropic.beta.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 800,
         temperature: 0.2,
