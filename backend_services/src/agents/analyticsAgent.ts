@@ -100,8 +100,8 @@ export class AnalyticsAgent {
       return result;
 
     } catch (error) {
-      this.logger.error(`Analytics failed for: ${query}`, { error: error.message });
-      throw new Error(`Analytics failed: ${error.message}`);
+      this.logger.error(`Analytics failed for: ${query}`, { error: error instanceof Error ? error.message : String(error) });
+      throw new Error(`Analytics failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
