@@ -497,7 +497,7 @@ export class Orchestrator extends EventEmitter {
       this.logger.info(`Task completed: ${task.id} (${task.type})`);
 
     } catch (error) {
-      task.error = error.message;
+      task.error = error instanceof Error ? error.message : String(error);
       task.status = 'failed';
       task.updatedAt = new Date();
 
@@ -507,7 +507,7 @@ export class Orchestrator extends EventEmitter {
       this.broadcastToSession(task.context.sessionId, {
         type: 'agent_response',
         agentType: task.type,
-        content: `I apologize, but I encountered an error: ${error.message}`,
+        content: `I apologize, but I encountered an error: ${error instanceof Error ? error.message : String(error)}`,
         taskId: task.id,
         isError: true
       });
