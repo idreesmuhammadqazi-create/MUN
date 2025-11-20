@@ -31,7 +31,7 @@ export interface WritingResult {
 }
 
 export class WritingAgent {
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
 
   // Diplomatic language templates
