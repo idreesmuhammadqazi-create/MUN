@@ -73,8 +73,8 @@ export class PolicyAgent {
       return response;
 
     } catch (error) {
-      this.logger.error(`Policy consultation failed for: ${query}`, { error: error.message });
-      throw new Error(`Policy consultation failed: ${error.message}`);
+      this.logger.error(`Policy consultation failed for: ${query}`, { error: error instanceof Error ? error.message : String(error) });
+      throw new Error(`Policy consultation failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
