@@ -125,7 +125,7 @@ export class PolicyAgent {
   private async generatePolicyResponse(query: string, context: any, queryType: any): Promise<PolicyResult> {
     const prompt = this.buildPolicyPrompt(query, context, queryType);
 
-    const message = await this.anthropic.beta.messages.create({
+    const message = await this.anthropic.messages.create({
       model: 'claude-3-sonnet-20240229',
       max_tokens: 1200,
       temperature: 0.3, // Lower temperature for procedural accuracy
@@ -290,7 +290,7 @@ Return a JSON object with:
 
 Focus on extracting actionable advice and specific rules. If information is not clearly present, use reasonable defaults based on standard MUN procedure.`;
 
-      const message = await this.anthropic.beta.messages.create({
+      const message = await this.anthropic.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 500,
         temperature: 0.2,
