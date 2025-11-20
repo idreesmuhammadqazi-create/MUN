@@ -455,8 +455,7 @@ export class Orchestrator extends EventEmitter {
           result = await this.researchAgent.research({
             query: task.query,
             context: task.context,
-            sessionId: task.context.sessionId,
-            priority: task.priority
+            priority: task.priority as 'low' | 'medium' | 'high'
           });
           break;
 
