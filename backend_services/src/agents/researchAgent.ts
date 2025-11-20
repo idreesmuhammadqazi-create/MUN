@@ -223,7 +223,7 @@ export class ResearchAgent {
         sources.push(...newsSources);
       }
     } catch (error) {
-      this.logger.warn(`News search failed for query: ${query.query}`, { error: error.message });
+      this.logger.warn(`News search failed for query: ${query.query}`, { error: error instanceof Error ? error.message : String(error) });
     }
 
     return sources;
