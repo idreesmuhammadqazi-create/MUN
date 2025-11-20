@@ -174,7 +174,7 @@ export class CrisisAgent {
   private async generateCrisisResponse(query: string, context: any, analysis: any): Promise<CrisisResult> {
     const prompt = this.buildCrisisPrompt(query, context, analysis);
 
-    const message = await this.anthropic.beta.messages.create({
+    const message = await this.anthropic.messages.create({
       model: 'claude-3-sonnet-20240229',
       max_tokens: 1800,
       temperature: 0.3, // Lower temperature for crisis accuracy
@@ -296,7 +296,7 @@ Return a JSON object with:
 
 Focus on actionable intelligence and specific diplomatic strategies.`;
 
-      const message = await this.anthropic.beta.messages.create({
+      const message = await this.anthropic.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 800,
         temperature: 0.2,
