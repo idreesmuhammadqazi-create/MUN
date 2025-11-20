@@ -105,8 +105,8 @@ export class WritingAgent {
       return result;
 
     } catch (error) {
-      this.logger.error(`Writing failed for: ${query}`, { error: error.message });
-      throw new Error(`Writing failed: ${error.message}`);
+      this.logger.error(`Writing failed for: ${query}`, { error: error instanceof Error ? error.message : String(error) });
+      throw new Error(`Writing failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
