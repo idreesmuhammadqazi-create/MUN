@@ -334,14 +334,19 @@ Provide a JSON response with:
 
 Focus on diplomatic effectiveness, clarity, and professional presentation.`;
 
-      const completion = await this.openai.chat.completions.create({
-        model: 'gpt-4-turbo-preview',
-        messages: [{ role: 'user', content: prompt }],
+      const message = await this.anthropic.messages.create({
+        model: 'claude-3-sonnet-20240229',
         max_tokens: 600,
-        temperature: 0.3
+        temperature: 0.3,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
       });
 
-      const response = completion.choices[0]?.message?.content || '{}';
+      const response = message.content[0]?.type === 'text' ? message.content[0].text : '{}';
 
       try {
         const parsed = JSON.parse(response);
