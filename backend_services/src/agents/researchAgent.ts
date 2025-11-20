@@ -432,14 +432,19 @@ ${query.context?.includes('crisis') ? '- Recent developments and current status'
 
 Response:`;
 
-      const completion = await this.openai.chat.completions.create({
-        model: 'gpt-4-turbo-preview',
-        messages: [{ role: 'user', content: prompt }],
+      const message = await this.anthropic.messages.create({
+        model: 'claude-3-sonnet-20240229',
         max_tokens: 1500,
-        temperature: 0.2 // Lower temperature for factual accuracy
+        temperature: 0.2, // Lower temperature for factual accuracy
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
       });
 
-      const content = completion.choices[0]?.message?.content || '';
+      const content = message.content[0]?.type === 'text' ? message.content[0].text : '';
       const confidence = this.calculateResponseConfidence(sources, content.length);
 
       return { content, confidence };
