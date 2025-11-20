@@ -317,7 +317,7 @@ Focus on extracting actionable advice and specific rules. If information is not 
         return this.extractFallbackStructuredInfo(content);
       }
     } catch (error) {
-      this.logger.warn('Failed to extract structured info', { error: error.message });
+      this.logger.warn('Failed to extract structured info', { error: error instanceof Error ? error.message : String(error) });
       return this.extractFallbackStructuredInfo(content);
     }
   }
