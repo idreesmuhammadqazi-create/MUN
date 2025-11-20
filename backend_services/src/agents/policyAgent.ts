@@ -125,14 +125,19 @@ export class PolicyAgent {
   private async generatePolicyResponse(query: string, context: any, queryType: any): Promise<PolicyResult> {
     const prompt = this.buildPolicyPrompt(query, context, queryType);
 
-    const completion = await this.openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
-      messages: [{ role: 'user', content: prompt }],
+    const message = await this.anthropic.messages.create({
+      model: 'claude-3-sonnet-20240229',
       max_tokens: 1200,
-      temperature: 0.3 // Lower temperature for procedural accuracy
+      temperature: 0.3, // Lower temperature for procedural accuracy
+      messages: [
+        {
+          role: 'user',
+          content: prompt
+        }
+      ]
     });
 
-    const content = completion.choices[0]?.message?.content || '';
+    const content = message.content[0]?.type === 'text' ? message.content[0].text : '';
 
     // Extract structured information
     const structured = await this.extractStructuredInfo(content);
