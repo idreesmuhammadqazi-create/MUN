@@ -41,7 +41,7 @@ export interface CrisisResult {
 }
 
 export class CrisisAgent {
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
 
   // Crisis type patterns
