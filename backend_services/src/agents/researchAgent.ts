@@ -503,7 +503,7 @@ Respond in JSON format with an array of fact-check results.`;
         return [];
       }
     } catch (error) {
-      this.logger.warn('Fact-checking failed', { error: error.message });
+      this.logger.warn('Fact-checking failed', { error: error instanceof Error ? error.message : String(error) });
       return [];
     }
   }
