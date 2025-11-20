@@ -135,9 +135,9 @@ export class ResearchAgent {
     } catch (error) {
       this.logger.error(`Research failed for query: ${query.query}`, {
         queryId,
-        error: error.message
+        error: error instanceof Error ? error.message : String(error)
       });
-      throw new Error(`Research failed: ${error.message}`);
+      throw new Error(`Research failed: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
