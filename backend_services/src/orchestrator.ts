@@ -489,8 +489,8 @@ export class Orchestrator extends EventEmitter {
         agentType: task.type,
         content: result.content || result,
         taskId: task.id,
-        metadata: result.metadata || {},
-        sources: result.sources || [],
+        metadata: (result as any).metadata || {},
+        sources: (result as any).sources || [],
         confidence: result.confidence || 0.5
       });
 
