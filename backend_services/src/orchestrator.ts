@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import WebSocket from 'ws';
 import { Logger } from 'winston';
-import { OpenAI } from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 import { ResearchAgent, ResearchQuery, ResearchResult } from './agents/researchAgent';
 import { PolicyAgent } from './agents/policyAgent';
 import { WritingAgent } from './agents/writingAgent';
