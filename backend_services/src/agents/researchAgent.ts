@@ -432,7 +432,7 @@ ${query.context?.includes('crisis') ? '- Recent developments and current status'
 
 Response:`;
 
-      const message = await this.anthropic.beta.messages.create({
+      const message = await this.anthropic.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 1500,
         temperature: 0.2, // Lower temperature for factual accuracy
@@ -482,7 +482,7 @@ Focus on:
 
 Respond in JSON format with an array of fact-check results.`;
 
-      const message = await this.anthropic.beta.messages.create({
+      const message = await this.anthropic.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 1000,
         temperature: 0.1,
