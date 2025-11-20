@@ -22,7 +22,7 @@ export interface PolicyResult {
 }
 
 export class PolicyAgent {
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
 
   // MUN Rules of Procedure knowledge base
