@@ -365,7 +365,7 @@ export class ResearchAgent {
       return content.substring(0, 10000); // Limit content length
 
     } catch (error) {
-      this.logger.warn(`Failed to fetch content from ${url}`, { error: error.message });
+      this.logger.warn(`Failed to fetch content from ${url}`, { error: error instanceof Error ? error.message : String(error) });
       return null;
     }
   }
