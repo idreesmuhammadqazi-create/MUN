@@ -53,7 +53,7 @@ export interface AnalyticsResult {
 }
 
 export class AnalyticsAgent {
-  private openai: OpenAI;
+  private anthropic: Anthropic;
   private logger: Logger;
 
   // MUN analytics patterns and benchmarks
