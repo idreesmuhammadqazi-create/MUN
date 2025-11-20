@@ -6,18 +6,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Configure logger
-const logger = Logger.createLogger({
+const logger = winston.createLogger({
   level: 'info',
-  format: Logger.format.combine(
-    Logger.format.timestamp(),
-    Logger.format.errors({ stack: true }),
-    Logger.format.json()
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
   ),
   transports: [
-    new Logger.transports.Console({
-      format: Logger.format.combine(
-        Logger.format.colorize(),
-        Logger.format.simple()
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple()
       )
     })
   ]
