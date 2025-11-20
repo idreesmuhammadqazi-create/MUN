@@ -159,7 +159,7 @@ export class AnalyticsAgent {
   private async generateAnalytics(query: string, context: any, analysis: any): Promise<AnalyticsResult> {
     const prompt = this.buildAnalyticsPrompt(query, context, analysis);
 
-    const message = await this.anthropic.messages.create({
+    const message = await this.anthropic.beta.messages.create({
       model: 'claude-3-sonnet-20240229',
       max_tokens: 1600,
       temperature: 0.3,
