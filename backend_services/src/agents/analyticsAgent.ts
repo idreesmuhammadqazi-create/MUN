@@ -301,7 +301,7 @@ Return a JSON object with:
 
 Ensure all metrics include specific numbers and percentages where applicable.`;
 
-      const message = await this.anthropic.messages.create({
+      const message = await this.anthropic.beta.messages.create({
         model: 'claude-3-sonnet-20240229',
         max_tokens: 700,
         temperature: 0.2,
