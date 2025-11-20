@@ -86,8 +86,8 @@ export class WritingAgent {
     }
   };
 
-  constructor(openaiApiKey: string, logger: Logger) {
-    this.openai = new OpenAI({ apiKey: openaiApiKey });
+  constructor(anthropicApiKey: string, logger: Logger) {
+    this.anthropic = new Anthropic({ apiKey: anthropicApiKey });
     this.logger = logger;
   }
 
