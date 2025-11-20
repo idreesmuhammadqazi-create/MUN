@@ -301,14 +301,19 @@ Return a JSON object with:
 
 Ensure all metrics include specific numbers and percentages where applicable.`;
 
-      const completion = await this.openai.chat.completions.create({
-        model: 'gpt-4-turbo-preview',
-        messages: [{ role: 'user', content: prompt }],
+      const message = await this.anthropic.messages.create({
+        model: 'claude-3-sonnet-20240229',
         max_tokens: 700,
-        temperature: 0.2
+        temperature: 0.2,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
       });
 
-      const response = completion.choices[0]?.message?.content || '{}';
+      const response = message.content[0]?.type === 'text' ? message.content[0].text : '{}';
 
       try {
         const parsed = JSON.parse(response);
